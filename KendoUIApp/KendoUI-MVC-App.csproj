@@ -44,6 +44,10 @@
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Kendo.Mvc, Version=2014.2.716.340, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Binaries\Mvc5\Kendo.Mvc.dll</HintPath>
@@ -61,6 +65,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -115,10 +121,28 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DatePickerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KendoMvcSamplesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\DanModel.cs" />
+    <Compile Include="Models\Knockout.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Knockout.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Knockout.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Knockout.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Knockout.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Knockout.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SalesOrder.cs">
+      <DependentUpon>Knockout.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -143,6 +167,16 @@
     <Content Include="Images\kendo\sprite.png" />
     <Content Include="Images\kendo\wp8_icons.png" />
     <Content Include="Images\kendo\wp8_inverseicons.png" />
+    <Content Include="Models\Knockout.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Knockout.Context.cs</LastGenOutput>
+      <DependentUpon>Knockout.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\Knockout.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Knockout.edmx</DependentUpon>
+      <LastGenOutput>Knockout.cs</LastGenOutput>
+    </Content>
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -153,6 +187,13 @@
     <Content Include="Content\Kendo.siemens.less" />
     <Content Include="Images\kendo\kendoui.ttf" />
     <Content Include="Images\kendo\kendoui.woff" />
+    <EntityDeploy Include="Models\Knockout.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Knockout.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Knockout.edmx.diagram">
+      <DependentUpon>Knockout.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -440,6 +481,11 @@
     <Content Include="Scripts\kendo\kendo.aspnetmvc.min.js.map" />
     <Content Include="Scripts\kendo\kendo.web.min.js.map" />
     <Content Include="Views\DatePicker\Index.cshtml" />
+    <Content Include="Views\KendoMvcSamples\Slider.cshtml" />
+    <Content Include="Views\KendoMvcSamples\Editor.cshtml" />
+    <Content Include="Views\KendoMvcSamples\Menu.cshtml" />
+    <Content Include="Views\KendoMvcSamples\ServerGridBinding.cshtml" />
+    <Content Include="Views\KendoMvcSamples\AjaxBinding.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Site.css" />
@@ -454,6 +500,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

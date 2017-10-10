@@ -1,0 +1,18 @@
+﻿@using Kendo.Mvc.UI
+@using KendoUIApp2.Models
+
+@{
+  ViewBag.Title = "server grid binding";
+}
+@(Html.Kendo().Grid((IEnumerable<SalesOrder>)ViewBag.Orders)
+    .Name("grid")
+    .Columns(columns =>
+    {
+      columns.Bound(product => product.SalesOrderId);
+      columns.Bound(product => product.CustomerName);
+      columns.Bound(product => product.PONumber);
+
+    })
+    .Pageable()
+    .Sortable()
+)
